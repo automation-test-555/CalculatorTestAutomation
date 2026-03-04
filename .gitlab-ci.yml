@@ -1,0 +1,15 @@
+stages:
+  - test
+
+windows_tests:
+  stage: test
+  tags:
+    - calculator-tests
+  script:
+    - dotnet restore
+    - dotnet build
+    - dotnet test --logger "trx" 
+    - allure generate allure-results -o allure-report --clean
+  artifacts:
+    paths:
+      - allure-report

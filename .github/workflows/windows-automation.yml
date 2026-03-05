@@ -28,8 +28,8 @@ jobs:
       
       - name: Debug session
         shell: powershell -ExecutionPolicy Bypass -Command "{0}"
-        run: |
-           query user echo $env:SESSIONNAME
+        run: query user echo $env:SESSIONNAME
+        
       - name: Run NUnit tests with Allure
         shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --logger "console;verbosity=detailed" CalculatorTestAutomation.sln

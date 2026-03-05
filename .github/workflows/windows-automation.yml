@@ -41,7 +41,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
          name: allure-report 
-         path: ./allure-report/index.html  
+         path: |
+            **/allure-report/**  
 
       - name: Upload Test Results
         if: always()

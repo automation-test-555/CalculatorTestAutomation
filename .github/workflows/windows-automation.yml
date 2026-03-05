@@ -43,7 +43,7 @@ jobs:
           name: test-results
           path: |
             **/TestResults/**
-            ./CalculatorTestAutomation/bin/Release/net8.0/allure-results/**
+            ./allure-results/**
             ./allure-report/**
 
   deploy:

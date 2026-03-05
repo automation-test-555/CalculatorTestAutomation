@@ -50,9 +50,12 @@ jobs:
           name: test-results
           path: |
             **/TestResults/
-            ./CalculatorTestAutomation/bin/Release/net8.0/allure-results
             ./CalculatorTestAutomation/bin/Release/net8.0/allure-results/allure-report.html
       
+      - name: Send email report
+        if: always()
+        run: powershell ./send-report.ps1     
+         
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4

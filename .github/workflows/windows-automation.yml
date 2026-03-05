@@ -27,7 +27,7 @@ jobs:
         run: dotnet build --no-restore --configuration Release CalculatorTestAutomation.sln
       
       - name: Check session
-        run: query user
+        run: C:\Windows\System32\query.exe user
         shell: powershell
 
       - name: Run NUnit tests with Allure

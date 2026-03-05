@@ -20,15 +20,15 @@ jobs:
            
       - name: Restore dependencies
         shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -Command
-        run: dotnet restore CalculatorTestAutomation\CalculatorTestAutomation.csproj
+        run: dotnet restore "C:\Users\menachem\RiderProjects\CalculatorTestAutomation\CalculatorTestAutomation\CalculatorTestAutomation.csproj"
       
       - name: Build project
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build --no-restore --configuration Release "C:\Users\menachem\RiderProjects\CalculatorTestAutomation\CalculatorTestAutomation.sln"
       
       - name: Run NUnit tests with Allure
-        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --logger "console;verbosity=detailed"
+        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --logger "console;verbosity=detailed" "C:\Users\menachem\RiderProjects\CalculatorTestAutomation\CalculatorTestAutomation\bin\Release\net8.0\CalculatorTestAutomation.dll"
         env:
-          ALLURE_RESULTS_DIRECTORY: ./allure-results
+          ALLURE_RESULTS_DIRECTORY: "C:\\Users\\menachem\\RiderProjects\\CalculatorTestAutomation\\CalculatorTestAutomation\\bin\\Release\\net8.0\\allure-results"
       
       - name: Generate Allure Report
         if: always()

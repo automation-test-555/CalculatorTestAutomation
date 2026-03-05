@@ -54,8 +54,9 @@ jobs:
       
       - name: Send email report
         if: always()
+        shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         run: powershell ./send-report.ps1     
-         
+
       - name: Upload Allure Report
         if: always()
         uses: actions/upload-artifact@v4

@@ -42,7 +42,7 @@ jobs:
         with:
           name: report-allure
           path: |
-            ./allure-report/
+            ./allure-report/index.html
 
       - name: Upload Test Results
         if: always()

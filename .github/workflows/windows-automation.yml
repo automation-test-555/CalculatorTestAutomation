@@ -55,10 +55,27 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+
     permissions:
       pages: write
       id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
+      - name: Download Allure HTML artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: report-allure
+          path: ./site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

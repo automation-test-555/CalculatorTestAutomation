@@ -18,22 +18,17 @@ jobs:
       - name: Build project
         run: dotnet build --configuration Release CalculatorTestAutomation.sln
 
-      - name: Run NUnit tests with Allure
+      - name: Run NUnit tests
         shell: powershell
         run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --logger "console;verbosity=detailed" CalculatorTestAutomation.sln
         env:
           ALLURE_RESULTS_DIRECTORY: ./CalculatorTestAutomation/bin/Release/net8.0/allure-results
 
-      - name: Generate Allure Report
+      - name: Generate Allure Report - Single-file
         if: always()
         shell: powershell
         run: |
           allure generate ./CalculatorTestAutomation/bin/Release/net8.0/allure-results --clean -o ./allure-report
-
-      - name: Generate Allure Single HTML
-        if: always()
-        shell: powershell
-        run: |
           allure generate ./CalculatorTestAutomation/bin/Release/net8.0/allure-results --clean --single-file -o ./allure-report
 
       - name: Upload Allure Results

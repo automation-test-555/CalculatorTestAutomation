@@ -43,9 +43,8 @@ jobs:
           name: test-results
           path: |
             **/TestResults/**
-            **/allure-report/**
-            **/allure-results/**
-
+            ./allure-report/
+       
   deploy:
     needs: test
     runs-on: ubuntu-latest
